@@ -24,6 +24,8 @@ create table if not exists public.projects (
   installation text not null default '',
   release_notes text not null default '',
   links jsonb not null default '[]'::jsonb,
+  download_url text not null default '',
+  download_label text not null default 'DOWNLOAD',
   status text not null default 'In progress'
     check (status in ('Completed','In progress','Concept','Experiment','Sample')),
   featured boolean not null default false,
