@@ -221,3 +221,17 @@ body{background:var(--bg);color:var(--fg)}
  .visual-project-caption h3{font-size:27px}
  .visual-project-open{opacity:1;transform:none}
 }
+
+/* Portfolio expansion: searchable archive and richer project storytelling */
+.project-search{display:flex;align-items:center;gap:22px;max-width:720px;margin:0 0 42px;padding:14px 0;border-bottom:1px solid var(--line)}
+.project-search span{flex:0 0 auto;font:9px var(--mono);letter-spacing:.13em;color:var(--muted)}
+.project-search input{width:100%;min-width:0;background:transparent;border:0;color:var(--fg);font:14px Manrope;outline:none}
+.project-search input::placeholder{color:#777b70}
+.case-study-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;padding:55px 0;border-top:1px solid var(--line)}
+.case-study-grid article{min-width:0}
+.case-study-grid article p,.project-specs p{font-size:14px;line-height:1.9;color:#c4c5bc;white-space:pre-line}
+.project-specs{padding:34px 0;border-top:1px solid var(--line)}
+.project-links{display:flex;gap:14px;flex-wrap:wrap;padding:10px 0 42px}
+.project-links a{font:10px var(--mono);letter-spacing:.08em;border:1px solid var(--line);padding:13px 16px;color:var(--fg)}
+.project-links a:hover{border-color:var(--lime);color:var(--lime)}
+@media(max-width:720px){.project-search{align-items:flex-start;flex-direction:column;gap:10px}.case-study-grid{grid-template-columns:1fr;gap:12px;padding:35px 0}.case-study-grid article{padding-bottom:16px}}
