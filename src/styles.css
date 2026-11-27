@@ -253,3 +253,9 @@ button,.primary-btn,.quiet-btn,.admin-actions button{transition:color .2s,backgr
 button:disabled{cursor:not-allowed}
 @media(max-width:760px){.project-download{align-items:flex-start;flex-direction:column;gap:18px}.project-download>a{width:100%;justify-content:space-between}.admin-list-head{align-items:flex-start;gap:12px;flex-direction:column}.admin-project{align-items:flex-start;flex-direction:column}.admin-actions{width:100%;justify-content:flex-end}}
 @media(prefers-reduced-motion:reduce){.home-hero .hero-topline,.home-hero .hero-title-wrap,.home-hero .hero-art-panel,.home-hero .hero-bottomline{animation:none!important}.visual-project-media,.project-download>a{transition:none!important}}
+
+.app-error{min-height:80svh;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:12vh 12vw;background:var(--bg);color:var(--fg)}
+.app-error h1{font-size:clamp(58px,9vw,120px);line-height:.9;letter-spacing:-.09em;margin:28px 0}
+.app-error h1 em{font-family:Georgia,serif;color:var(--lime);font-weight:400}
+.app-error p{color:var(--muted);line-height:1.8;margin:0 0 26px}
+@media(max-width:720px){.app-error{padding:10vh 7vw}}
