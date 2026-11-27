@@ -389,3 +389,17 @@ img,video,iframe{max-width:100%}
 }
 @media(hover:none){.visual-project-open{opacity:1;transform:none}.visual-project:hover .visual-project-media>img{transform:none}}
 @media(prefers-reduced-motion:reduce){.lastdraft-orbit.orbit-b{animation:none}}
+
+.lastdraft-teaser{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,7vw,100px);align-items:center;padding-top:105px;padding-bottom:105px;background:#171916}
+.lastdraft-teaser-art{min-height:360px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:24px;background:radial-gradient(ellipse at 55% 48%,#d5e8ae 0,#758b54 35%,#29372b 74%,#171d19 100%);color:#192016}
+.lastdraft-teaser-art:before,.lastdraft-teaser-art:after{content:"";position:absolute;border:1px solid rgba(18,28,18,.45);border-radius:50%;width:76%;aspect-ratio:1;left:12%;top:12%}
+.lastdraft-teaser-art:after{width:48%;left:26%;top:26%;border-style:dashed;animation:orbit-spin 55s linear infinite}
+.lastdraft-teaser-art>span{font:9px var(--mono);letter-spacing:.14em;z-index:1}
+.lastdraft-teaser-art strong{font-size:clamp(42px,6vw,78px);line-height:.8;letter-spacing:-.09em;z-index:1}
+.lastdraft-teaser-art strong em{font-family:Georgia,serif;color:#eaf2d8;font-weight:400}
+.lastdraft-teaser-art i{position:absolute;width:16px;height:16px;border-radius:50%;background:#d8ef9b;right:16%;top:18%;box-shadow:0 0 50px 20px rgba(216,239,155,.25)}
+.lastdraft-teaser-copy h2{font-size:clamp(42px,6vw,76px);line-height:.95;letter-spacing:-.08em;margin:25px 0}
+.lastdraft-teaser-copy h2 em{font-family:Georgia,serif;color:var(--lime);font-weight:400}
+.lastdraft-teaser-copy p{max-width:510px;color:#aeb1a4;line-height:1.9;font-size:14px;margin:0 0 28px}
+.lastdraft-teaser-copy>a{font:9px var(--mono);letter-spacing:.12em;color:var(--lime);border-bottom:1px solid rgba(200,241,105,.45);padding-bottom:10px}
+@media(max-width:760px){.lastdraft-teaser{grid-template-columns:1fr;padding-top:70px;padding-bottom:75px}.lastdraft-teaser-art{min-height:300px}.lastdraft-teaser-copy h2{font-size:clamp(42px,12vw,62px)}}
