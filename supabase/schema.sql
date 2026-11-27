@@ -16,7 +16,7 @@ create table if not exists public.projects (
   role text default '',
   client text default '',
   status text not null default 'In progress'
-    check (status in ('Completed','In progress','Concept','Experiment')),
+    check (status in ('Completed','In progress','Concept','Experiment','Sample')),
   featured boolean not null default false,
   published boolean not null default false,
   sort_order integer not null default 0,
@@ -33,6 +33,7 @@ create table if not exists public.site_settings (
   about_body text default 'I’ve been making things independently since 2018 and working professionally since December 2022. My work moves between editing, motion design and building small tools that make creative workflows better.',
   contact_email text default 'thunderclap714@gmail.com',
   github_url text default 'https://github.com/jstar-creator',
+  instagram_url text default 'https://www.instagram.com/commonjacksonw.in/',
   updated_at timestamptz not null default now()
 );
 insert into public.site_settings (id) values (1) on conflict (id) do nothing;
