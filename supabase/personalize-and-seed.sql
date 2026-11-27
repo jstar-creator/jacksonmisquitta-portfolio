@@ -2,6 +2,7 @@
 -- Run once in Supabase SQL Editor after the original schema.sql.
 alter table public.projects add column if not exists status text not null default 'In progress';
 alter table public.site_settings add column if not exists instagram_url text default 'https://www.instagram.com/commonjacksonw.in/';
+alter table public.site_settings add column if not exists about_image_url text default '';
 update public.site_settings set instagram_url='https://www.instagram.com/commonjacksonw.in/' where id=1 and (instagram_url is null or instagram_url='');
 alter table public.projects drop constraint if exists projects_status_check;
 alter table public.projects add constraint projects_status_check
