@@ -42,3 +42,15 @@ The About page expects the supplied image at `public/images/who-am-i.webp`. Add 
 ## Project status
 
 Projects are explicitly labelled **Completed**, **In progress**, **Concept** or **Experiment**. Do not interpret a concept or experiment as a released product.
+
+## Portfolio case studies and software details
+
+The project editor supports:
+- Case-study sections for the brief/challenge, approach and outcome/learning.
+- Software/plugin compatibility, version or release status, platform, installation notes and release notes.
+- External project links, video embeds, cover media and gallery images.
+- Archive search across project names, descriptions and tools.
+
+For an existing Supabase database, run `supabase/migrations/20261127000100_portfolio_case_studies.sql` in the Supabase SQL Editor after the original setup. Fresh databases created with `supabase/schema.sql` already include these fields.
+
+Project statuses remain explicit: Completed, In progress, Concept, Experiment or Sample. Only published projects appear publicly; drafts remain available to allow-listed admins.
