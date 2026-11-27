@@ -22,3 +22,5 @@
 .project-meta small{line-height:1.8}
 .project-image .image-index{background:rgba(12,15,13,.22);padding:7px 9px}
 @media(max-width:720px){.footer-social{display:none}.contact-socials{gap:14px}}
+
+.about-image-preview{grid-column:1/-1;display:flex;align-items:flex-start;gap:18px;flex-wrap:wrap}.about-image-preview img{width:min(220px,100%);max-height:260px;object-fit:cover;border:1px solid var(--line)}.editor-form input[type=file]{max-width:100%}
