@@ -34,6 +34,7 @@ create table if not exists public.site_settings (
   contact_email text default 'thunderclap714@gmail.com',
   github_url text default 'https://github.com/jstar-creator',
   instagram_url text default 'https://www.instagram.com/commonjacksonw.in/',
+  about_image_url text default '',
   updated_at timestamptz not null default now()
 );
 insert into public.site_settings (id) values (1) on conflict (id) do nothing;
