@@ -536,3 +536,53 @@ img,video,iframe{max-width:100%}
  .resume-bottom{flex-direction:column}
 }
 @media(max-width:390px){.software-metrics span{font-size:6px}.skill-matrix article b{font-size:10px}.archive-toolbar .archive-filters button{padding:9px 10px}}
+
+
+/* Software project cards — tighter geometry, distinct desktop and phone compositions.
+   The orbital artwork is an accent, not the main subject. */
+.software-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 22px;align-items:start}
+.software-grid .visual-project-media{aspect-ratio:1.42!important;min-height:0}
+.software-grid .project-art{background-image:radial-gradient(circle at 50% 48%,rgba(157,184,112,.22) 0,rgba(71,91,61,.16) 23%,rgba(24,39,32,.9) 72%)}
+.software-grid .project-art:after{content:"";position:absolute;width:39%;aspect-ratio:1;border:1px solid rgba(230,239,210,.25);border-radius:50%;left:30.5%;top:30.5%;z-index:0;pointer-events:none}
+.software-grid .art-orbit{width:43%;left:28.5%;top:28.5%;opacity:.7}
+.software-grid .art-orbit.orbit-two{width:27%;left:36.5%;top:36.5%;opacity:.45}
+.software-grid .art-software{background:radial-gradient(circle at 50% 48%,rgba(166,190,119,.28) 0 2%,rgba(86,109,71,.25) 3% 13%,#24352c 43%,#131b18 82%)}
+.software-grid .project-art strong{max-width:78%;font-size:clamp(30px,3.2vw,48px);line-height:.92;letter-spacing:-.075em}
+.software-grid .art-overline{top:15px;left:17px;font-size:8px}
+.software-grid .art-index{right:16px;bottom:14px;font-size:9px}
+.software-grid .visual-project-caption{padding-top:12px}
+.software-grid .visual-project-caption h3{font-size:clamp(20px,2vw,26px);margin:5px 0}
+.software-grid .visual-project-caption p{font-size:11px;max-width:95%}
+.software-grid .visual-project-caption>b{font-size:18px;padding-top:12px}
+@media(min-width:1200px){
+ .software-grid .visual-project-media{aspect-ratio:1.48!important}
+ .software-grid .project-art strong{font-size:clamp(34px,2.8vw,46px)}
+}
+@media(max-width:900px) and (min-width:761px){
+ .software-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 18px}
+ .software-grid .visual-project-media{aspect-ratio:1.38!important}
+ .software-grid .project-art strong{font-size:clamp(28px,4vw,42px)}
+}
+@media(max-width:760px){
+ /* Phone is intentionally a compact editorial list, not a scaled desktop grid. */
+ .software-grid{grid-template-columns:1fr;gap:22px}
+ .software-grid .visual-project{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.88fr);gap:13px;align-items:center;padding:0 0 18px;border-bottom:1px solid var(--line)}
+ .software-grid .visual-project-media{aspect-ratio:1.08!important}
+ .software-grid .project-art strong{font-size:clamp(22px,6vw,34px);max-width:82%}
+ .software-grid .art-orbit{width:48%;left:26%;top:26%}
+ .software-grid .art-orbit.orbit-two{width:29%;left:35.5%;top:35.5%}
+ .software-grid .project-art:after{width:42%;left:29%;top:29%}
+ .software-grid .art-overline{font-size:6px;top:10px;left:10px}
+ .software-grid .art-index{font-size:7px;right:10px;bottom:9px}
+ .software-grid .visual-project-caption{padding:0;gap:7px}
+ .software-grid .visual-project-caption>div>span{font-size:7px;line-height:1.5}
+ .software-grid .visual-project-caption h3{font-size:clamp(17px,4.8vw,23px);line-height:1.05;margin:6px 0}
+ .software-grid .visual-project-caption p{font-size:10px;line-height:1.55}
+ .software-grid .visual-project-caption>b{font-size:16px;padding-top:0;align-self:start}
+ .software-grid .visual-project-open{display:none}
+}
+@media(max-width:380px){
+ .software-grid .visual-project{grid-template-columns:minmax(0,1fr) minmax(0,.82fr);gap:10px}
+ .software-grid .visual-project-caption h3{font-size:17px}
+ .software-grid .visual-project-caption p{font-size:9px}
+}
