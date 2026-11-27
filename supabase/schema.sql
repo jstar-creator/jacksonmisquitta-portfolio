@@ -24,6 +24,8 @@ create table if not exists public.projects (
   installation text not null default '',
   release_notes text not null default '',
   links jsonb not null default '[]'::jsonb,
+  download_url text not null default '',
+  download_label text not null default 'DOWNLOAD',
   status text not null default 'In progress'
     check (status in ('Completed','In progress','Concept','Experiment','Sample')),
   featured boolean not null default false,
@@ -85,7 +87,7 @@ using (public.is_portfolio_admin()) with check (public.is_portfolio_admin());
 insert into storage.buckets
 (id, name, public, file_size_limit, allowed_mime_types)
 values ('portfolio-media','portfolio-media',true,52428800,
-  array['image/jpeg','image/png','image/webp','image/gif','video/mp4','video/webm'])
+  array['image/jpeg','image/png','image/webp','image/gif','video/mp4','video/webm','application/zip','application/x-zip-compressed','application/octet-stream','application/x-msdownload','application/pdf','application/json','text/plain'])
 on conflict (id) do update set
  public=true, file_size_limit=52428800,
  allowed_mime_types=excluded.allowed_mime_types;
