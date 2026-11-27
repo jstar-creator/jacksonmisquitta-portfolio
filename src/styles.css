@@ -14,3 +14,11 @@
 .skill-cloud span{padding:12px 15px;border:1px solid var(--line);font:11px var(--mono);color:#c5c8bb}
 .about-note{border-left:2px solid var(--lime);padding:8px 0 8px 18px;color:var(--muted);font-size:13px;line-height:1.8;max-width:620px;margin:20px 0 0}
 @media(max-width:720px){.about-feature{grid-template-columns:1fr;margin:35px 0 70px}.about-portrait{max-width:100%}.about-columns{grid-template-columns:1fr;gap:20px}.about-section{padding:40px 0 50px}}
+
+.footer-social,.contact-socials{display:flex;gap:22px;align-items:center}
+.footer-social a,.contact-socials a{font:10px var(--mono);letter-spacing:.09em}
+.contact-socials{flex-wrap:wrap;margin-top:26px}
+.project-card:has(.project-meta small){position:relative}
+.project-meta small{line-height:1.8}
+.project-image .image-index{background:rgba(12,15,13,.22);padding:7px 9px}
+@media(max-width:720px){.footer-social{display:none}.contact-socials{gap:14px}}
