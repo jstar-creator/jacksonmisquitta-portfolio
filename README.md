@@ -42,3 +42,9 @@ The About page expects the supplied image at `public/images/who-am-i.webp`. Add 
 ## Project status
 
 Projects are explicitly labelled **Completed**, **In progress**, **Concept** or **Experiment**. Do not interpret a concept or experiment as a released product.
+
+## Content brought into the portfolio
+
+The content seed includes the existing creative-work and software-project entries, including The All Rounder, ProxyLink, SubCorrect, Smart Release Pro, Guardian, One Piece Interactive Map, BGMI Account Estimator and Maps of Past. It also includes LastDraft as an in-progress product concept. Its description distinguishes the stated vision and roadmap from released functionality.
+
+The portfolio keeps its own visual design and navigation. The added capabilities are limited to searchable project discovery and richer project pages/editor fields; no JackHacks homepage, layout or component system is copied.

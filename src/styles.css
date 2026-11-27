@@ -221,3 +221,16 @@ body{background:var(--bg);color:var(--fg)}
  .visual-project-caption h3{font-size:27px}
  .visual-project-open{opacity:1;transform:none}
 }
+
+/* Search and project detail additions use the existing portfolio visual language. */
+.archive-search{display:flex;align-items:center;gap:20px;max-width:620px;margin:-8px 0 42px;padding:12px 0;border-bottom:1px solid var(--line)}
+.archive-search span{font:9px var(--mono);letter-spacing:.13em;color:var(--muted);white-space:nowrap}
+.archive-search input{width:100%;background:transparent;border:0;color:var(--fg);font:13px Manrope;outline:none}
+.archive-search input::placeholder{color:#777b70}
+.case-study-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;padding:48px 0;border-top:1px solid var(--line)}
+.case-study-grid p,.project-specs p{font-size:13px;line-height:1.9;color:#c4c5bc;white-space:pre-line}
+.project-specs{padding:30px 0;border-top:1px solid var(--line)}
+.project-links{display:flex;gap:12px;flex-wrap:wrap;padding:8px 0 36px}
+.project-links a{font:9px var(--mono);letter-spacing:.08em;border:1px solid var(--line);padding:12px 14px;color:#d5d6cd}
+.project-links a:hover{border-color:var(--lime);color:var(--lime)}
+@media(max-width:720px){.archive-search{align-items:flex-start;flex-direction:column;gap:9px}.case-study-grid{grid-template-columns:1fr;gap:10px;padding:32px 0}}
