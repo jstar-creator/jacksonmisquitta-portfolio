@@ -1,36 +1,44 @@
 # Jackson Misquitta — Portfolio
 
-A cinematic, responsive portfolio for video editing, motion graphics and independent software tools. Built with React, Vite and Supabase.
+A cinematic, responsive portfolio for video editing, motion graphics and creative software experiments. Built with React, Vite and Supabase.
 
-## Cloudflare Pages deployment
+## Cloudflare Pages
 
 - Framework preset: **Vite**
 - Build command: `npm run build`
 - Build output directory: `dist`
 - Root directory: `/`
-- Production branch: `main` (after merging the rebuild PR)
+- Production branch: `main`
 
-The `public/_redirects` file enables client-side routes on Cloudflare Pages.
+Set these variables for both Production and Preview:
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY` (Supabase publishable key is accepted)
 
-## Supabase setup (required for CMS)
+## Supabase setup
 
-1. Create a Supabase project.
-2. Open **SQL Editor** and run all of `supabase/schema.sql`.
-3. In Authentication settings, disable public sign-ups. Create your own admin user manually in **Authentication → Users → Add user**.
-4. Copy the Project URL and anon/publishable key from Project Settings → API.
-5. Add these Cloudflare Pages environment variables for Production and Preview:
-   - `VITE_SUPABASE_URL`
-   - `VITE_SUPABASE_ANON_KEY`
-6. Trigger a new deployment.
+1. Run `supabase/schema.sql` in the SQL Editor for a fresh project.
+2. Create your account in **Authentication → Users**.
+3. Add your user to `public.admin_users` using the SQL Editor:
+   ```sql
+   insert into public.admin_users (user_id)
+   select id from auth.users where email = 'YOUR_ADMIN_EMAIL'
+   on conflict (user_id) do nothing;
+   ```
+4. Disable public sign-ups in Authentication settings.
+5. Add the Cloudflare environment variables above and redeploy.
 
-The SQL creates the projects and site settings tables, RLS policies and public `portfolio-media` bucket. Public visitors can read published projects and site settings. Authenticated users can manage content. **Keep public sign-ups disabled** so visitors cannot create accounts and gain CMS access.
+For the already-created project, run `supabase/personalize-and-seed.sql` once. It adds project status, tightens write permissions to the admin allow-list and inserts the portfolio entries with honest status labels.
+
+Never put a Supabase secret/service-role key in the browser.
 
 ## Admin
 
-Visit `/admin` and sign in with the admin user you created in Supabase. You can create, edit, publish, unpublish, feature and delete projects; upload cover images and small MP4/WebM videos (50 MB limit); add video embeds and gallery image URLs; and update homepage/about/contact settings.
+Visit `/admin`. Sign in with the Supabase user added to `admin_users`. The CMS supports project CRUD, status, categories, publishing, featured ordering, media uploads and site settings.
 
-For larger video work, use a YouTube or Vimeo URL instead of uploading the master file. The Supabase anon key is intended for browser use; security comes from RLS and disabling public registration. Never put a Supabase service-role key in the frontend.
+## About image
 
-## Notes
+The About page expects the supplied image at `public/images/who-am-i.webp`. Add the image there in the repository (create `public/images` if needed). It will be served at `/images/who-am-i.webp`.
 
-The initial project entries are demo records until you connect Supabase and add your real work. No sample video footage or fabricated client work is included.
+## Project status
+
+Projects are explicitly labelled **Completed**, **In progress**, **Concept** or **Experiment**. Do not interpret a concept or experiment as a released product.
