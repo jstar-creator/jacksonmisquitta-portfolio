@@ -1,0 +1,35 @@
+import React,{useEffect,useState} from 'react';
+import {Link} from 'react-router-dom';
+import {configured,supabase} from '../lib/supabase';
+
+const defaults={title:'Last Draft',tagline:'Design Intelligence, Crafted for Creators',show_coming_soon:true,hero_subtitle:'Technology should understand design — not replace designers.',vision_heading:'A creative platform that learns how professional designers think.',vision_description:'Unlike image generation tools, Last Draft studies decades of design knowledge and converts it into practical creative tools.',goal_quote:'Last Draft is building the Creative Intelligence Layer for Design.',goal_description:'Not an image generator. Not another tool. A system that understands how great design is composed — and helps professionals reach their best work faster while keeping every creative decision in human hands.',show_signup:true};
+const ecosystem=[['01','Compose','Typography & layout tools'],['02','Motion','Motion graphics tooling'],['03','Brand','Brand consistency system'],['04','Studio','Custom style training'],['05','Engine','Core design model'],['06','SDK','API for future products']];
+const modules=['Composition','Typography','Hierarchy','Balance','Brand','Motion'];
+const principles=['Typography','Composition','Hierarchy','White space','Logo placement','Brand consistency','Rhythm','Visual balance'];
+const roadmap=[['V0.1','Metadata extraction','Complete'],['V0.2','Automatic layout analysis','In progress'],['V0.3','Client-specific training','Planned'],['V0.4','Layout recommendation','Planned'],['V0.5','Premiere plugin','Planned'],['V0.6','After Effects plugin','Planned'],['V1.0','Professional release','Milestone']];
+const features=['8 composition suggestions','Editable layouts','Client style models','Brand learning','Typography tools'];
+export default function LastDraft(){
+ const [settings,setSettings]=useState(defaults),[email,setEmail]=useState(''),[status,setStatus]=useState('idle'),[error,setError]=useState('');
+ useEffect(()=>{if(!configured)return;supabase.from('lastdraft_settings').select('*').maybeSingle().then(({data})=>{if(data)setSettings({...defaults,...data})})},[]);
+ async function submit(e){e.preventDefault();setStatus('loading');setError('');if(!configured){setError('The signup list will be available once the site database is connected.');setStatus('error');return}
+ const{error}=await supabase.from('lastdraft_subscribers').insert({email:email.trim().toLowerCase()});
+ if(error&&error.code!=='23505'){setError(error.message);setStatus('error')}else setStatus('success');
+ }
+ return <main className="lastdraft-page">
+  <section className="ld-hero"><div className="ld-orbit ld-orbit-a"/><div className="ld-orbit ld-orbit-b"/>
+   <Link to="/" className="ld-back">← JACKSON MISQUITTA / MAIN SITE</Link>
+   <div className="ld-hero-content"><span className="eyebrow">AN INDEPENDENT PRODUCT VISION · 001</span><div className="ld-status">{settings.show_coming_soon!==false?'IN DEVELOPMENT':'PRODUCT UPDATE'}</div><h1>{settings.title||'Last Draft'}<span>.</span></h1><p className="ld-tagline">{settings.tagline||defaults.tagline}</p><p className="ld-subtitle">{settings.hero_subtitle||defaults.hero_subtitle}</p><a href="#ld-vision" className="ld-scroll">EXPLORE THE THINKING ↓</a></div>
+   <div className="ld-hero-foot"><span>CREATIVE INTELLIGENCE / DESIGN SYSTEMS</span><span>BUILT FOR THE PEOPLE BEHIND THE WORK</span></div>
+  </section>
+  <section id="ld-vision" className="ld-section ld-vision"><span className="eyebrow">01 / THE VISION</span><div><h2>{settings.vision_heading||defaults.vision_heading}</h2><p>{settings.vision_description||defaults.vision_description}</p></div></section>
+  <section className="ld-section ld-ecosystem"><div className="ld-section-head"><span className="eyebrow">02 / THE ECOSYSTEM</span><h2>One intelligence.<br/><em>Many creative surfaces.</em></h2></div><div className="ld-ecosystem-grid">{ecosystem.map(([n,name,desc])=><article key={name}><span>{n}</span><h3>{name}</h3><p>{desc}</p><b>↗</b></article>)}</div></section>
+  <section className="ld-section ld-engine"><div><span className="eyebrow">03 / THE ENGINE</span><h2>Design is more<br/>than pixels.</h2><p>Last Draft is shaped around the systems behind a considered design — the relationships, rules and decisions that make a composition work.</p></div><div className="ld-engine-panel"><div className="ld-engine-core">LD<span>ENGINE</span></div>{modules.map((m,i)=><span className={'ld-module ld-module-'+i} key={m}>{m}</span>)}</div></section>
+  <section className="ld-section ld-principles"><span className="eyebrow">04 / WHAT IT LEARNS</span><h2>Creative judgement,<br/><em>made legible.</em></h2><div>{principles.map((p,i)=><span key={p}><b>{String(i+1).padStart(2,'0')}</b>{p}</span>)}</div></section>
+  <section className="ld-section ld-release"><div><span className="eyebrow">05 / THE FIRST RELEASE</span><h2>Useful from<br/><em>the first draft.</em></h2><p>Early capabilities are designed to support a designer's process, not take creative control away.</p></div><div className="ld-feature-list">{features.map((f,i)=><article key={f}><span>0{i+1}</span>{f}<b>↗</b></article>)}</div></section>
+  <section className="ld-section ld-flow"><span className="eyebrow">06 / A SIMPLE WORKFLOW</span><h2>From raw elements<br/><em>to a considered layout.</em></h2><div className="ld-flow-steps">{[['01','Drop Logo'],['02','Drop Text'],['03','Choose Brand'],['04','Explore Layout']].map(([n,t],i)=><article key={n}><span>{n}</span><b>{t}</b>{i<3&&<i>→</i>}</article>)}</div></section>
+  <section className="ld-section ld-roadmap"><span className="eyebrow">07 / THE ROADMAP</span><h2>Built in deliberate<br/><em>iterations.</em></h2><div>{roadmap.map(([v,t,s])=><article key={v}><b>{v}</b><span>{t}</span><small className={s==='Complete'?'done':s==='Milestone'?'milestone':''}>{s}</small></article>)}</div></section>
+  <section className="ld-goal"><span className="eyebrow">THE LONG-TERM GOAL</span><blockquote>{settings.goal_quote||defaults.goal_quote}</blockquote><p>{settings.goal_description||defaults.goal_description}</p></section>
+  {settings.show_signup!==false&&<section className="ld-signup"><span className="eyebrow">FOLLOW THE BUILD</span><h2>Be there for<br/><em>the first draft.</em></h2><p>We're building quietly. Leave your email to hear when Last Draft is ready to share.</p>{status==='success'?<p className="ld-success">You're on the list. We'll be in touch.</p>:<form onSubmit={submit}><input type="email" value={email} onChange={e=>setEmail(e.target.value)} placeholder="Your email address" required/><button disabled={status==='loading'}>{status==='loading'?'ADDING…':'NOTIFY ME ↗'}</button>{status==='error'&&<small>{error}</small>}</form>}</section>}
+  <footer className="ld-footer"><Link to="/">← BACK TO JACKSON'S PORTFOLIO</Link><span>LAST DRAFT / A WORK IN PROGRESS</span></footer>
+ </main>
+}
